@@ -15,4 +15,6 @@
   </mat-error>
 
   <mat-error *ngIf="control.hasError('email')"> Email is incorrect. </mat-error>
+
+  <mat-error *ngIf="control.hasError('pattern')"> Please enter a valid {{ fieldName }}. </mat-error>
 </mat-form-field>

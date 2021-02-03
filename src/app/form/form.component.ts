@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ValidatorPatterns } from '../shared/utils/validator-patterns.util';
 import { FormService } from './form.service';
 import { Branch } from './models/branch.model';
 import { Community } from './models/community.model';
@@ -97,7 +98,13 @@ export class FormComponent implements OnInit {
         '',
         Validators.compose([Validators.required, Validators.email])
       ),
-      [this.PHONE_FORM_KEY]: this.fb.control('', Validators.required),
+      [this.PHONE_FORM_KEY]: this.fb.control(
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(ValidatorPatterns.phone),
+        ])
+      ),
     });
   }
 
