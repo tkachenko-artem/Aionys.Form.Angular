@@ -124,6 +124,10 @@ export class FormComponent implements OnInit {
     this.getLanguages();
   }
 
+  public resetForm(): void {
+    this.form.reset();
+  }
+
   public submitForm(): void {
     if (this.form.invalid) {
       return;

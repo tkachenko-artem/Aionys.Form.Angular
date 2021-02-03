@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 const materialModules = [
   MatButtonModule,
@@ -23,11 +24,18 @@ const materialModules = [
 
 const components = [InputComponent, SelectComponent];
 
+const otherModules = [TextMaskModule];
+
 const sharedModules = [CommonModule, FormsModule, ReactiveFormsModule];
 @NgModule({
-  imports: [...materialModules, ...sharedModules],
+  imports: [...materialModules, ...sharedModules, ...otherModules],
   declarations: [...components],
-  exports: [...materialModules, ...sharedModules, ...components],
+  exports: [
+    ...materialModules,
+    ...sharedModules,
+    ...components,
+    ...otherModules,
+  ],
   providers: [MatNativeDateModule],
 })
 export class SharedModule {}

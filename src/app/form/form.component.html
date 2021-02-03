@@ -74,13 +74,14 @@
       <app-input
         class="form-field"
         [control]="phoneControl"
+        [isPhoneNumber]="true"
         fieldName="Phone"
       ></app-input>
     </div>
   </form>
   <div class="form-actions">
     <div class="buttons">
-      <button mat-button type="button">Reset</button>
+      <button (click)="resetForm()" mat-button type="button">Reset</button>
       <button
         (click)="submitForm()"
         type="submit"
