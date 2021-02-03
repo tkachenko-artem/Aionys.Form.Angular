@@ -1,4 +1,8 @@
-<mat-form-field class="form-field" appearance="outline" [ngClass]="{ 'datepicker-padding': isDatepicker }">
+<mat-form-field
+  class="form-field"
+  appearance="outline"
+  [ngClass]="{ 'datepicker-padding': isDatepicker }"
+>
   <mat-label>{{ fieldName }}</mat-label>
   <ng-container *ngIf="!isDatepicker">
     <input [textMask]="currentTextMask" matInput [formControl]="control" />
@@ -14,7 +18,13 @@
     {{ fieldName }} is required.
   </mat-error>
 
+  <mat-error *ngIf="control.hasError('required-no-whitespace')">
+    {{ fieldName }} is required.
+  </mat-error>
+
   <mat-error *ngIf="control.hasError('email')"> Email is incorrect. </mat-error>
 
-  <mat-error *ngIf="control.hasError('pattern')"> Please enter a valid {{ fieldName }}. </mat-error>
+  <mat-error *ngIf="control.hasError('pattern')">
+    Please enter a valid {{ fieldName }}.
+  </mat-error>
 </mat-form-field>

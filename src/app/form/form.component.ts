@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -7,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ValidatorPatterns } from '../shared/utils/validator-patterns.util';
+import { requiredNoWhitespace } from '../shared/utils/validators.utils';
 import { FormService } from './form.service';
 import { Branch } from './models/branch.model';
 import { Community } from './models/community.model';
@@ -89,8 +89,8 @@ export class FormComponent implements OnInit {
     this.form = this.fb.group({
       [this.BRANCH_FORM_KEY]: this.fb.control('', Validators.required),
       [this.COMMUNITY_FORM_KEY]: this.fb.control('', Validators.required),
-      [this.FIRST_NAME_FORM_KEY]: this.fb.control('', Validators.required),
-      [this.LAST_NAME_FORM_KEY]: this.fb.control('', Validators.required),
+      [this.FIRST_NAME_FORM_KEY]: this.fb.control('', requiredNoWhitespace()),
+      [this.LAST_NAME_FORM_KEY]: this.fb.control('', requiredNoWhitespace()),
       [this.DATE_OF_BIRTH_FORM_KEY]: this.fb.control('', Validators.required),
       [this.GENDER_FORM_KEY]: this.fb.control('', Validators.required),
       [this.LANGUAGE_FORM_KEY]: this.fb.control('', Validators.required),
